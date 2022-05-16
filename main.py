@@ -8,53 +8,54 @@ import time
 ###
 
 def simple_work_calc(n, a, b):
-	"""Compute the value of the recurrence $W(n) = aW(n/b) + n
-
-	Params:
-	n......input integer
-	a......branching factor of recursion tree
-	b......input split factor
-
-	Returns: the value of W(n).
-	"""
-	# TODO
-	pass
+  if n<= 1:
+    return n
+  else:
+    x = a * simple_work_calc(n//b, a, b)+n
+    return x
 
 def test_simple_work():
 	""" done. """
-	assert work_calc(10, 2, 2) == #TODO
-	assert work_calc(20, 3, 2) == #TODO
-	assert work_calc(30, 4, 2) == #TODO
+	assert simple_work_calc(10, 2, 2) == 
+	assert simple_work_calc(20, 3, 2) == 
+	assert simple_work_calc(30, 4, 2) == 
+
+  assert simple_work_calc(40, 4, 3) == 
+  assert simple_work_calc(50, 3, 2) == 
+  assert simple_work_calc(60, 5, 4) == 
 
 def work_calc(n, a, b, f):
 	"""Compute the value of the recurrence $W(n) = aW(n/b) + f(n)
-
 	Params:
 	n......input integer
 	a......branching factor of recursion tree
 	b......input split factor
 	f......a function that takes an integer and returns 
            the work done at each node 
-
 	Returns: the value of W(n).
 	"""
-	# TODO
-	pass
+	if n <= 1:
+    return 1
+  else:
+    x = a * work_calc(n//b, a, b, f) + f(n)
+  return x
 
 def span_calc(n, a, b, f):
 	"""Compute the span associated with the recurrence $W(n) = aW(n/b) + f(n)
-
 	Params:
 	n......input integer
 	a......branching factor of recursion tree
 	b......input split factor
 	f......a function that takes an integer and returns 
            the work done at each node 
-
 	Returns: the value of W(n).
 	"""
 	# TODO
-	pass
+	if (n <=1):
+    return 1
+  else:
+    x = span_calc(n//b, a, b, f) + f(n)
+    return x
 
 def test_work():
 	""" done. """
